@@ -1,1 +1,140 @@
-/* CSS declarations go here */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*
+  Chat Coyote CSS
+*/
+
+body {
+  font-family: Arial;
+}
+
+.message {
+  margin: 5px;
+  max-width: 65%;
+}
+.message .screenname,.timestamp {
+  font-size: 11px;
+  color: #4c8141;
+  margin-left: 5px;
+  float: inherit;
+}
+
+.message .chattext {  
+  background-color: #e1e1e1;
+  margin: 3px 0 3px 0;
+  padding: 7px;
+  font-size: 14px;
+  -moz-border-radius: 10px;  
+  -webkit-border-radius: 10px;
+  float: inherit;
+}
+
+.message.mine .chattext {
+  background-color: #aedff4;
+}
+
+.messages {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 25px;
+  width: 100%;
+  overflow: auto;
+}
+
+.messages .other {
+  float:left;
+}
+
+.messages .mine {
+  float:right;
+}
+
+.info {
+  position: absolute;
+  top: 0;
+  padding: 4px;
+  width: 100%;
+  display: table;
+}
+
+.info .myname {
+  background-color: #FFF;
+  border: 1px solid;
+  -moz-border-radius: 10px;  
+  -webkit-border-radius: 10px;
+}
+
+.info section {
+  display: table-cell;
+  width: 33%;
+  text-align: center;
+}
+
+.prompt {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.prompt .myname {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+}
+
+.prompt .chatinput  {
+  width: 100%;
+  font-size: 14px;
+  
+}
+
+.clear {
+  clear:both;
+}

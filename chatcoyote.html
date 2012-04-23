@@ -1,15 +1,51 @@
 <head>
-  <title>chatcoyote</title>
+  <title>Yet Another Chat Client</title>
 </head>
 
 <body>
-  {{> hello}}
+  {{> room}}
+  {{> info}}
+  <div class="prompt">
+    <section>
+      <form>
+        <input class="chatinput" type="text" maxlength="140" value="" >
+      </form>
+    </section>
+  </div>
 </body>
 
-<template name="hello">
-  <div class="hello">
-    <h1>Hello World!</h1>
-    {{greeting}}
-    <input type="button" value="Click" />
+<template name="info">
+  <div class="info">
+    <section/>
+    <section class="myname">Welcome {{screenname}} <input type="button" value="change"></section>
+    <section/>
+  </div>
+</template>
+
+<template name="message">
+  {{#if is_mine screenname}}
+  <div class="message mine">
+  {{else}}
+  <div class="message other">
+  {{/if}}
+    <section class="screenname">{{screenname}}</section>
+    <div class="clear"></div>
+    <section class="chattext">{{chattext}}</section>
+    <div class="clear"></div>
+    <section class="timestamp">
+      <time datetime="{{html5_timestamp}}">{{timestamp}}</time>
+    </section>
+    <div class="clear"></div>
+  </div>
+  <div class="clear"></div>
+</template>
+
+<template name="room">
+  <div class="room">
+    <section class="messages">
+    {{#each messages}}
+      {{> message}}
+    {{/each}}
+    </section>
   </div>
 </template>
