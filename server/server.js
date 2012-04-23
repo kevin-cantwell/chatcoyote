@@ -7,11 +7,11 @@ Meteor.startup(function () {
     });
   });
   // Disable synchronized client-side writes. Writes controlled via Meteor.call invokations.
-  _.each(['messages'], function(collection) {
-    _.each(['insert', 'update', 'remove'], function(method) {
-      Meteor.default_server.method_handlers['/' + collection + '/' + method] = function() {};
-    });
-  });
+  //_.each(['messages'], function(collection) {
+  //  _.each(['insert', 'update', 'remove'], function(method) {
+  //    Meteor.default_server.method_handlers['/' + collection + '/' + method] = function() {};
+  //  });
+  //});
 });
 
 Meteor.methods({

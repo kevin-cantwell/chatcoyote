@@ -52,17 +52,23 @@ get_room_key = function () {
 };
 
 send_message = function (msg) {
-  Meteor.call('insert_message', {
-    room_key: get_room_key(),
-    screenname: Session.get("screenname"),
-    chattext: msg
+  Messages.insert({
+      room_key: get_room_key(),
+      screenname: Session.get("screenname"),
+      chattext: msg, 
+      timestamp: new Date().getTime()
   });
+  //Meteor.call('insert_message', {
+  //  room_key: get_room_key(),
+  //  screenname: Session.get("screenname"),
+  //  chattext: msg
+  //});
 };
 
 Template.info.events = {
   'click .info input' : function() {
     var screenname = prompt("New name:");
-    if(screenname !== '' && screenname !== undefined) {
+    if(screenname !== '' && screenname !== null && !Session.equals("screenname", screenname)) {
       var prev = Session.get("screenname");
       Session.set("screenname", screenname);
       send_message("I just changed my name from " + prev + " to " + screenname);
