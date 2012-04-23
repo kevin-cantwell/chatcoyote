@@ -1,16 +1,19 @@
 Meteor.startup(function () {
   // Only populate local db with current room's messages
   Meteor.subscribe("messages", get_room_key());
-  if(Session.equals("screenname", undefined)) {
-    Session.set("screenname", "Anon" + new Date().getTime());
-  }
+  Session.set("screenname", "Anon" + new Date().getTime());
+
+  /*
+   * Capture form submit here because doing so from template
+   * events doesn't seem to work as well.
+   */ 
   $("form").submit(function() {
     if($(".chatinput").val() !== "") {
       send_message($(".chatinput").val());
     }
-    $(".chatinput").val("").focus();
     return false;
   });
+
   $(".chatinput").focus();
 });
 
@@ -23,6 +26,9 @@ Template.room.messages = function () {
 };
 
 Template.message.timestamp = function() {
+  /*
+   * I do realize how ugly this is. Just a wip.
+   */
   var d = new Date(this.timestamp);
   var hours = d.getHours();
   var minutes = d.getMinutes();
@@ -58,21 +64,17 @@ send_message = function (msg) {
       chattext: msg, 
       timestamp: new Date().getTime()
   });
-  //Meteor.call('insert_message', {
-  //  room_key: get_room_key(),
-  //  screenname: Session.get("screenname"),
-  //  chattext: msg
-  //});
+  $(".chatinput").val("");
+  $(".chatinput").focus();
 };
 
 Template.info.events = {
-  'click .info input' : function() {
-    var screenname = prompt("New name:");
-    if(screenname !== '' && screenname !== null && !Session.equals("screenname", screenname)) {
+  'click .changename' : function() {
+    var screenname = $('.setname').val();
+    if(screenname !== '' && !Session.equals("screenname", screenname)) {
       var prev = Session.get("screenname");
       Session.set("screenname", screenname);
       send_message("I just changed my name from " + prev + " to " + screenname);
     }
-    $(".chatinput").focus();
   }
 };

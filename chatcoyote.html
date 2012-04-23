@@ -17,7 +17,10 @@
 <template name="info">
   <div class="info">
     <section/>
-    <section class="myname">Welcome {{screenname}} <input type="button" value="change"></section>
+    <section class="myname">
+      Welcome <input class="setname" type="text" value="{{screenname}}">
+      <input class="changename" type="button" value="change">
+    </section>
     <section/>
   </div>
 </template>
