@@ -7,23 +7,12 @@ Meteor.startup(function () {
     });
   });
   // Disable synchronized client-side writes. Writes controlled via Meteor.call invokations.
-  //_.each(['messages'], function(collection) {
-  //  _.each(['insert', 'update', 'remove'], function(method) {
-  //    Meteor.default_server.method_handlers['/' + collection + '/' + method] = function() {};
-  //  });
-  //});
-});
-
-Meteor.methods({
-  // Method call since write access is protected
-  insert_message: function(attr) {
-    var now = new Date();
-    console.log("[" + now.toJSON() + "] insert_message:" + JSON.stringify(attr));
-    return Messages.insert({
-      room_key: attr.room_key,
-      screenname: attr.screenname,
-      chattext: attr.chattext, 
-      timestamp: now.getTime()
+  Meteor.default_server.method_handlers['/messages/insert'] = function (data) {
+    Messages.insert({
+        room_key: data.room_key,
+        screenname: data.screenname,
+        chattext: data.chattext, 
+        timestamp: new Date().getTime()
     });
-  }
+  };
 });

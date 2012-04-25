@@ -29,7 +29,7 @@ Meteor.startup(function () {
 Template.onready.callback = function () {
   Meteor.setTimeout(function() {
     $(window).scrollTop(50000);
-  },300);
+  },1000);
 };
 
 Template.info.screenname = function () {
@@ -76,12 +76,10 @@ send_message = function (msg) {
   Messages.insert({
       room_key: get_room_key(),
       screenname: Session.get("screenname"),
-      chattext: msg, 
-      timestamp: new Date().getTime()
+      chattext: msg
   });
   $(".chatinput").val("");
   $(".chatinput").focus();
-  //$("body").scrollTop($("body").height());
 };
 
 Template.info.events = {
