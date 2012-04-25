@@ -76,7 +76,8 @@ send_message = function (msg) {
   Messages.insert({
       room_key: get_room_key(),
       screenname: Session.get("screenname"),
-      chattext: msg
+      chattext: msg, 
+      timestamp: new Date().getTime()
   });
   $(".chatinput").val("");
   $(".chatinput").focus();
