@@ -55,60 +55,105 @@ body {
   font-family: Arial;
 }
 
+input {
+  padding: 0;
+  margin: 0;
+}
+
+.clear {
+  clear:both;
+}
+
 .message {
   margin: 5px;
   max-width: 65%;
 }
+
 .message .screenname,.timestamp {
   font-size: 11px;
   color: #4c8141;
-  margin-left: 5px;
+  margin: 0 15px;
+  float: inherit;
+}
+
+.message .chatbubble {
+  margin: 3px;
+  position: relative;
   float: inherit;
 }
 
 .message .chattext {  
-  background-color: #e1e1e1;
-  margin: 3px 0 3px 0;
-  padding: 7px;
   font-size: 14px;
-  -moz-border-radius: 10px;  
-  -webkit-border-radius: 10px;
-  float: inherit;
+  padding: 7px 12px;
+  -moz-box-shadow: 2px 4px 5px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 2px 4px 5px rgba(0,0,0,0.5);
+  box-shadow: 2px 4px 5px rgba(0,0,0,0.5);
+  -moz-border-radius: 20px;  
+  -webkit-border-radius: 20px;
+}
+
+.message.other .chattext {
+  background-color: #e1e1e1;
+  margin-left: 10px;
 }
 
 .message.mine .chattext {
   background-color: #aedff4;
+  margin-right: 10px;
+}
+
+.message .chattail {
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+}
+
+.message.other .chattail {
+  float:left;
+  left: 0;
+  border-bottom: 12px solid #e1e1e1;
+}
+
+.message.mine .chattail {
+  float:right;
+  right: 0;
+  border-bottom: 12px solid #aedff4;
 }
 
 .messages {
-  position: absolute;
-  bottom: 0;
-  margin-bottom: 25px;
+  margin-bottom: 35px;
   width: 100%;
-  overflow: auto;
 }
 
-.messages .other {
+.message.other {
   float:left;
 }
 
-.messages .mine {
+.message.mine {
   float:right;
 }
 
 .info {
-  position: absolute;
+  position: fixed;
   top: 0;
-  padding: 4px;
+  padding: 5px;
   width: 100%;
   display: table;
 }
 
 .info .myname {
   background-color: #FFF;
+  padding: 5px;
   border: 1px solid;
   -moz-border-radius: 10px;  
   -webkit-border-radius: 10px;
+}
+
+.info .setname {
+  font-size: 15px;
 }
 
 .info section {
@@ -123,18 +168,7 @@ body {
   width: 100%;
 }
 
-.prompt .myname {
-  position: absolute;
-  bottom: 5px;
-  left: 5px;
-}
-
 .prompt .chatinput  {
+  font-size: 20px;
   width: 100%;
-  font-size: 14px;
-  
-}
-
-.clear {
-  clear:both;
 }

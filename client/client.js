@@ -14,8 +14,23 @@ Meteor.startup(function () {
     return false;
   });
 
+  var myprev = new Date().toJSON();
+  Meteor.setInterval(function() {
+    var mylast = $(".message time").last().attr('datetime');
+    if(new Date(myprev) < new Date(mylast)) {
+      myprev = mylast;
+      $(window).scrollTop(50000);
+    }
+  }, 100);
+  
   $(".chatinput").focus();
 });
+
+Template.onready.callback = function () {
+  Meteor.setTimeout(function() {
+    $(window).scrollTop(50000);
+  },300);
+};
 
 Template.info.screenname = function () {
   return Session.get("screenname");
@@ -66,6 +81,7 @@ send_message = function (msg) {
   });
   $(".chatinput").val("");
   $(".chatinput").focus();
+  //$("body").scrollTop($("body").height());
 };
 
 Template.info.events = {

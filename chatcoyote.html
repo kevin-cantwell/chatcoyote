@@ -5,25 +5,13 @@
 <body>
   {{> room}}
   {{> info}}
-  <div class="prompt">
-    <section>
-      <form>
-        <input class="chatinput" type="text" maxlength="140" value="" >
-      </form>
-    </section>
-  </div>
+  <section class="prompt">
+    <form>
+      <input class="chatinput" type="text" maxlength="140" value="" >
+    </form>
+  </section>
+  {{> onready}}
 </body>
-
-<template name="info">
-  <div class="info">
-    <section/>
-    <section class="myname">
-      Welcome <input class="setname" type="text" value="{{screenname}}">
-      <input class="changename" type="button" value="change">
-    </section>
-    <section/>
-  </div>
-</template>
 
 <template name="message">
   {{#if is_mine screenname}}
@@ -33,7 +21,10 @@
   {{/if}}
     <section class="screenname">{{screenname}}</section>
     <div class="clear"></div>
-    <section class="chattext">{{chattext}}</section>
+    <section class="chatbubble">
+      <div class="chattail"></div>
+      <div class="chattext">{{chattext}}</div>
+    </section>
     <div class="clear"></div>
     <section class="timestamp">
       <time datetime="{{html5_timestamp}}">{{timestamp}}</time>
@@ -50,5 +41,22 @@
       {{> message}}
     {{/each}}
     </section>
+  </div>
+</template>
+
+<template name="info">
+  <div class="info">
+    <section/>
+    <section class="myname">
+      Welcome <input class="setname" type="text" maxlength="20" value="{{screenname}}">
+      <input class="changename" type="button" value="change">
+    </section>
+    <section/>
+  </div>
+</template>
+
+<template name="onready">
+  <div>
+    {{callback}}
   </div>
 </template>
