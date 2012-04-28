@@ -13,23 +13,18 @@ Meteor.startup(function () {
     }
     return false;
   });
-
-  var myprev = new Date().toJSON();
-  Meteor.setInterval(function() {
-    var mylast = $(".message time").last().attr('datetime');
-    if(new Date(myprev) < new Date(mylast)) {
-      myprev = mylast;
-      $(window).scrollTop(50000);
-    }
-  }, 100);
   
   $(".chatinput").focus();
 });
 
-Template.onready.callback = function () {
-  Meteor.setTimeout(function() {
-    $(window).scrollTop(50000);
-  },1000);
+/*
+ * Total hack to perform scrolling after rendering each message.
+ * Actually not sure why this works...
+ */
+Template.callback.scroll_on_message_render = function () {
+  $(window).scrollTop(50000);
+  Messages.find({}).fetch();
+  return "scroll_on_message_render";
 };
 
 Template.info.screenname = function () {

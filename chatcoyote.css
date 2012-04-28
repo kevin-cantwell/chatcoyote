@@ -52,7 +52,7 @@ table {
 */
 
 body {
-  font-family: Arial;
+  font-family: Courier New;
 }
 
 input {
@@ -64,9 +64,27 @@ input {
   clear:both;
 }
 
+.bottom-anchor {
+  position: fixed;
+  bottom: 0;
+}
+
+.messages {
+  margin-bottom: 35px;
+  width: 100%;
+}
+
 .message {
   margin: 5px;
   max-width: 65%;
+}
+
+.message.other {
+  float:left;
+}
+
+.message.mine {
+  float:right;
 }
 
 .message .screenname,.timestamp {
@@ -85,9 +103,9 @@ input {
 .message .chattext {  
   font-size: 14px;
   padding: 7px 12px;
-  -moz-box-shadow: 2px 4px 5px rgba(0,0,0,0.5);
-  -webkit-box-shadow: 2px 4px 5px rgba(0,0,0,0.5);
-  box-shadow: 2px 4px 5px rgba(0,0,0,0.5);
+  -moz-box-shadow: 2px 4px 2px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 2px 4px 2px rgba(0,0,0,0.5);
+  box-shadow: 2px 4px 2px rgba(0,0,0,0.5);
   -moz-border-radius: 20px;  
   -webkit-border-radius: 20px;
 }
@@ -107,8 +125,8 @@ input {
   bottom: 0;
   width: 0;
   height: 0;
-  border-left: 16px solid transparent;
-  border-right: 16px solid transparent;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
 }
 
 .message.other .chattail {
@@ -121,19 +139,6 @@ input {
   float:right;
   right: 0;
   border-bottom: 12px solid #aedff4;
-}
-
-.messages {
-  margin-bottom: 35px;
-  width: 100%;
-}
-
-.message.other {
-  float:left;
-}
-
-.message.mine {
-  float:right;
 }
 
 .info {

@@ -3,14 +3,16 @@
 </head>
 
 <body>
-  {{> room}}
-  {{> info}}
+  <div class="chatter">
+    {{> room}}
+    {{> info}}
+  </div>
   <section class="prompt">
     <form>
       <input class="chatinput" type="text" maxlength="140" value="" >
     </form>
   </section>
-  {{> onready}}
+  {{> callback}}
 </body>
 
 <template name="message">
@@ -55,8 +57,6 @@
   </div>
 </template>
 
-<template name="onready">
-  <div>
-    {{callback}}
-  </div>
+<template name="callback">
+  <input type="hidden" value="{{scroll_on_message_render}}" >
 </template>
