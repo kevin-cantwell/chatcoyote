@@ -1,22 +1,38 @@
+Users = new Meteor.Collection("users");
+
 var last_msg_index = 0;
 var pending_message;
+
+
 
 Meteor.startup(function () {
   // Only populate local db with current room's messages
   Meteor.subscribe("messages", get_room_key());
   Session.set("screenname", "Anon" + new Date().getTime());
 
-  /*
-   * Capture form submit here because doing so from template
-   * events doesn't seem to work as well.
-   */ 
+  bind_submit_handler();
+  bind_keyboard_shortcuts();
+  $(".chatinput").focus();
+});
+
+/*
+ * Capture form submit here because doing so from template
+ * events doesn't seem to work as well.
+ */ 
+var bind_submit_handler = function () {
   $("form").submit(function() {
     if($(".chatinput").val() !== "") {
       send_message($(".chatinput").val());
     }
     return false;
   });
+};
 
+/*
+ * Define shortcuts such as up/down keys
+ * for auto populating previous messages.
+ */ 
+var bind_keyboard_shortcuts = function () {
   $(".chatinput").keydown(function(e) {
     var $msgs = $(".message.mine .chattext");
     if(e.which === 38 || e.which === 40) {
@@ -41,8 +57,7 @@ Meteor.startup(function () {
     }
   });
   
-  $(".chatinput").focus();
-});
+};
 
 /*
  * Total hack to perform scrolling after rendering each message.
@@ -90,11 +105,11 @@ Template.message.is_mine = function(screenname) {
   return Session.equals("screenname", screenname);
 };
 
-get_room_key = function () {
+var get_room_key = function () {
   return window.location.pathname
 };
 
-send_message = function (msg) {
+var send_message = function (msg) {
   Messages.insert({
       room_key: get_room_key(),
       screenname: Session.get("screenname"),
