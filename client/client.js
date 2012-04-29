@@ -1,3 +1,6 @@
+var last_msg_index = 0;
+var pending_message;
+
 Meteor.startup(function () {
   // Only populate local db with current room's messages
   Meteor.subscribe("messages", get_room_key());
@@ -13,6 +16,30 @@ Meteor.startup(function () {
     }
     return false;
   });
+
+  $(".chatinput").keydown(function(e) {
+    var $msgs = $(".message.mine .chattext");
+    if(e.which === 38 || e.which === 40) {
+      // if up arrow
+      if(last_msg_index < $msgs.length && e.which === 38) { 
+        if(++last_msg_index === 1)
+          // Then save off the current message in progress
+          pending_message = $(this).val(); 
+        var new_pending_msg = $msgs.eq($msgs.length - last_msg_index).text();
+        $(".chatinput").val(new_pending_msg);
+      } 
+      // if down arrow
+      if(last_msg_index > 0 && e.which === 40) {
+        if(--last_msg_index === 0) {
+          // Then reset the current message in progress
+          $(".chatinput").val(pending_message);
+        } else {
+          var new_pending_msg = $msgs.eq($msgs.length - last_msg_index).text();
+          $(".chatinput").val(new_pending_msg);
+        }
+      }
+    }
+  });
   
   $(".chatinput").focus();
 });
@@ -24,7 +51,7 @@ Meteor.startup(function () {
 Template.callback.scroll_on_message_render = function () {
   $(window).scrollTop(50000);
   Messages.find({}).fetch();
-  return "scroll_on_message_render";
+  return "void";
 };
 
 Template.info.screenname = function () {
@@ -76,6 +103,7 @@ send_message = function (msg) {
   });
   $(".chatinput").val("");
   $(".chatinput").focus();
+  last_msg_index = 0;
 };
 
 Template.info.events = {
