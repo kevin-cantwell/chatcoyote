@@ -12,9 +12,11 @@ Helpers.get_room_name = function () {
 */ 
 Helpers.bind_submit_handler = function () {
   $("form").submit(function() {
-    if($(".chatinput").val() !== "") {
-      Helpers.send_message($(".chatinput").val());
+    if($(".chatinput").val().trim() !== "") {
+      Helpers.send_message($(".chatinput").val().trim());
     }
+    $(".chatinput").val("");
+    $(".chatinput").focus();
     return false;
   });
 };
@@ -61,7 +63,5 @@ Helpers.send_message = function (msg) {
     chattext: msg, 
     timestamp: new Date().getTime()
   });
-  $(".chatinput").val("");
-  $(".chatinput").focus();
   Session.set("last_msg_index", 0);
 };

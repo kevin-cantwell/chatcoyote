@@ -47,7 +47,7 @@ Template.message.is_current_user = function(user_id) {
 Template.message.user_name = function() {
   Meteor.subscribe("users", Session.get("room_id"));
   var user = Users.findOne(this.user_id);
-  return user ? user.name : 'Unknown';
+  return user ? user.name : '';
 };
 
 Template.info.events = {
