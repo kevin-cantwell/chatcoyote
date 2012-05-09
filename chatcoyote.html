@@ -16,12 +16,12 @@
 </body>
 
 <template name="message">
-  {{#if is_mine screenname}}
+  {{#if is_current_user user_id}}
   <div class="message mine">
   {{else}}
   <div class="message other">
   {{/if}}
-    <section class="screenname">{{screenname}}</section>
+    <section class="handle">{{user_name}}</section>
     <div class="clear"></div>
     <section class="chatbubble">
       <div class="chattail"></div>
@@ -29,7 +29,7 @@
     </section>
     <div class="clear"></div>
     <section class="timestamp">
-      <time datetime="{{html5_timestamp}}">{{timestamp}}</time>
+      <time datetime="{{html5_timestamp}}">{{pretty_time}}</time>
     </section>
     <div class="clear"></div>
   </div>
@@ -50,7 +50,7 @@
   <div class="info">
     <section/>
     <section class="myname">
-      Welcome <input class="setname" type="text" maxlength="20" value="{{screenname}}">
+      Welcome <input class="setname" type="text" maxlength="20" value="{{handle}}">
       <input class="changename" type="button" value="change">
     </section>
     <section/>
