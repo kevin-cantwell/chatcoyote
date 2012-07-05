@@ -14,6 +14,11 @@ Template.info.handle = function () {
   return user ? user.name : '';
 };
 
+Template.info.room_name = function () {
+  var room = Rooms.findOne(Session.get("room_id"));
+  return room ? room.name : '';
+};
+
 Template.room.messages = function () {
   return Messages.find({}, {sort: {timestamp: 1}});
 };

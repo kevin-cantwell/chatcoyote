@@ -1,3 +1,4 @@
+Rooms = new Meteor.Collection("rooms");
 /*
  * {
  *   name: string, // handle

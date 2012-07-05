@@ -3,10 +3,12 @@
 </head>
 
 <body>
-  <div class="chatter">
+  <section class="chatter">
     {{> room}}
+  </section>
+  <section class="info-bar">
     {{> info}}
-  </div>
+  </section>
   <section class="prompt">
     <form>
       <input class="chatinput" type="text" maxlength="140" value="" >
@@ -47,13 +49,12 @@
 </template>
 
 <template name="info">
-  <div class="info">
-    <section/>
-    <section class="myname">
-      Welcome <input class="setname" type="text" maxlength="20" value="{{handle}}">
-      <input class="changename" type="button" value="change">
-    </section>
-    <section/>
+  <div class="info-left">
+    Room: {{room_name}}
+  </div>
+  <div class="info-right">
+    Handle: <input class="setname" type="text" maxlength="20" value="{{handle}}">
+    <input class="changename" type="button" value="change">
   </div>
 </template>
 

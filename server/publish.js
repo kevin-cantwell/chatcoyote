@@ -1,5 +1,3 @@
-Rooms = new Meteor.Collection("rooms");
-
 Meteor.publish("usersessions", function(room_name, user_id, private_key) {
   var session_id, user_id;
   var room_id = Rooms.findsert({name: room_name});
@@ -30,4 +28,8 @@ Meteor.publish("messages", function(room_id) {
     sort: {timestamp: -1},
     limit: 100
   });
+});
+
+Meteor.publish("rooms", function(room_id) {
+  return Rooms.find(room_id);
 });

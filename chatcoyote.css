@@ -142,20 +142,26 @@ input {
   border-bottom: 12px solid #aedff4;
 }
 
-.info {
-  position: fixed;
-  top: 0;
-  padding: 5px;
-  width: 100%;
-  display: table;
+.chatter {
+  padding-top: 30px;
 }
 
-.info .myname {
-  background-color: #FFF;
-  padding: 5px;
-  border: 1px solid;
-  -moz-border-radius: 10px;  
-  -webkit-border-radius: 10px;
+.info-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #000000;
+  color: #FFFFFF;
+  padding: 2px;
+  font-size: 11px;
+}
+
+.info-left {
+  float: left;
+}
+
+.info-right {
+  float: right;
 }
 
 .info .setname {

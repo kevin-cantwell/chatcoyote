@@ -8,6 +8,7 @@ Meteor.startup(function () {
     var session = UserSessions.findOne();
     Meteor.subscribe("users", session.room_id);
     Meteor.subscribe("messages", session.room_id);
+    Meteor.subscribe("rooms", session.room_id);
 
     Session.set("my_user_id", session.user_id);
     Session.set("room_id", session.room_id);
