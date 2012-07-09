@@ -35,6 +35,7 @@
   container.style.border = '1px solid';
   container.style.fontFamily = '"Helvetica Neue", Helvetica, Arial, sans-serif';
   container.style.fontSize = '12px';
+  container.style.zIndex = '9999';
 
   var controls = document.createElement('div');
   controls.style.width = width + 'px';
