@@ -28,5 +28,5 @@ Meteor.startup(function () {
   CC.Bind.submit();
   CC.Bind.keyboardShortcuts();
 
-  $(".chatinput").focus();
+  //$(".chatinput").focus();
 });
