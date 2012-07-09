@@ -52,7 +52,7 @@ Template.info.handle = function () {
 
 Template.info.room_name = function () {
   var room = Rooms.findOne(Session.get("room_id"));
-  return room ? room.name : '';
+  return room ? (room.name || '') : '';
 };
 
 Template.info.invokeAfterLoad = function() {

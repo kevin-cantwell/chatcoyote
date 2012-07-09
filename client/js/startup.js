@@ -1,3 +1,4 @@
+
 Meteor.startup(function () {
   var room_name = CC.roomName();
   var roomHref = CC.roomHref();
@@ -18,6 +19,8 @@ Meteor.startup(function () {
 
     $.cookie("user_id", session.user_id);
     $.cookie("private_key", session.private_key);
+
+    $('.spinner').hide();
   });
 
   Session.set("last_msg_index", 0);

@@ -60,6 +60,13 @@ input {
   margin: 0;
 }
 
+.spinner {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  top: 45%;
+}
+
 .clear {
   clear:both;
 }
