@@ -52,7 +52,7 @@ table {
 */
 
 body {
-  font-family: Arial;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 input {
@@ -153,25 +153,27 @@ input {
   background: #000000;
   color: #FFFFFF;
   padding: 2px;
-  font-size: 11px;
+  font-size: 12px;
+  display: table;
 }
 
-.info-left {
-  float: left;
-}
-
-.info-right {
-  float: right;
-}
-
-.info .setname {
-  font-size: 15px;
-}
-
-.info section {
+.info-item {
   display: table-cell;
-  width: 33%;
-  text-align: center;
+  padding: 0 10px;
+  font-size: 13px;
+}
+
+.info-item.left {
+  text-align: left;
+}
+
+.info-item.right {
+  text-align: right;
+}
+
+.info-bar .setname {
+  font-size: 13px;
+  width: 120px;
 }
 
 .prompt {
@@ -181,6 +183,6 @@ input {
 }
 
 .prompt .chatinput  {
-  font-size: 20px;
+  font-size: 17px;
   width: 100%;
 }

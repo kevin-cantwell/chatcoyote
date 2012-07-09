@@ -1,5 +1,5 @@
 <head>
-  <title>Yet Another Chat Client</title>
+  <title></title>
 </head>
 
 <body>
@@ -11,11 +11,21 @@
   </section>
   <section class="prompt">
     <form>
-      <input class="chatinput" type="text" maxlength="140" value="" >
+      <input class="chatinput" type="text" maxlength="140" value="" placeholder="Speak your mind">
     </form>
   </section>
-  {{> callback}}
 </body>
+
+<template name="room">
+  <div class="room">
+    <section class="messages">
+    {{#each messages}}
+      {{> message}}
+    {{/each}}
+    </section>
+  </div>
+  {{scroll}}
+</template>
 
 <template name="message">
   {{#if is_current_user user_id}}
@@ -38,26 +48,13 @@
   <div class="clear"></div>
 </template>
 
-<template name="room">
-  <div class="room">
-    <section class="messages">
-    {{#each messages}}
-      {{> message}}
-    {{/each}}
-    </section>
-  </div>
-</template>
-
 <template name="info">
-  <div class="info-left">
-    Room: {{room_name}}
-  </div>
-  <div class="info-right">
-    Handle: <input class="setname" type="text" maxlength="20" value="{{handle}}">
-    <input class="changename" type="button" value="change">
-  </div>
+  <section class="info-item left">
+    {{room_name}}
+  </section>
+  <section class="info-item right">
+    You: <input class="setname" type="text" maxlength="20" value="{{handle}}">
+  </section>
+  {{invokeAfterLoad}}
 </template>
 
-<template name="callback">
-  <input type="hidden" value="{{scroll_on_message_render}}" >
-</template>

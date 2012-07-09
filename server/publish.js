@@ -1,6 +1,6 @@
-Meteor.publish("usersessions", function(room_name, user_id, private_key) {
+Meteor.publish("usersessions", function(room_name, roomHref, user_id, private_key) {
   var session_id, user_id;
-  var room_id = Rooms.findsert({name: room_name});
+  var room_id = Rooms.findsert({name: room_name, href: roomHref});
   if (Helpers.is_authentic(user_id, private_key)) {
     session_id = UserSessions.findsert({user_id: user_id, room_id: room_id, private_key: private_key});
     var user = Users.findOne(user_id);
