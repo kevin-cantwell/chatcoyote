@@ -18,7 +18,7 @@
 
 */
 (function() {
-  var host = 'http://yacc.meteor.com';
+  var host = 'http://chatcoyote.herokuapp.com';
   var chatUrl = host + '/chat?room=&href=' + window.location.href;
   var controlHeight = 20;
   var iFrameHeight = 350;
